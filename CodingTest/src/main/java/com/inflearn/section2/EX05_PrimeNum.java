@@ -30,9 +30,17 @@ public class EX05_PrimeNum {
 	}
 	
 	public int solution(int cnt) {
-		//인강 아이디어: 에라토스테네스 체 -> cnt+1 길이의 char배열을 만든다. i=2부터 for문을 돌려서 원소가 0이라면 해당 i의 배수인 인덱스 원소를 다 0으로 초기화.  
+		//인강 아이디어: 에라토스테네스 체 -> cnt+1 길이의 char배열을 만든다. i=2부터 for문을 돌려서 원소가 0이라면 해당 i의 배수인 인덱스 원소++.  
 		int ans = 0;
-
+		int[] arr = new int[cnt+1];
+		for(int i=2; i<cnt+1; i++) {
+			if(arr[i] == 0) {
+				ans++;
+				for(int j=2*i; j<cnt+1; j+=i) {
+					arr[j]++;
+				}
+			}
+		}
 		return ans;
 	}
 
@@ -41,6 +49,6 @@ public class EX05_PrimeNum {
 		
 		Scanner sc = new Scanner(System.in);
 		int cnt = sc.nextInt();
-		System.out.println(pn.mySol(cnt));
+		System.out.println(pn.solution(cnt));
 	}
 }
