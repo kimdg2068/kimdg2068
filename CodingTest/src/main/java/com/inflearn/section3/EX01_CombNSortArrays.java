@@ -16,10 +16,13 @@ public class EX01_CombNSortArrays {
 		오름차순으로 정렬된 배열을 출력합니다.
 	 */
 	
-	public String mySol(int[] arr1, int[] arr2) {
+	public String mySol(int len1, int len2, int[] arr1, int[] arr2) {
 		StringBuilder sb = new StringBuilder();
-		int[] sortArr = new int[arr1.length+arr2.length];
-		
+		int[] sortArr = new int[len1+len2];
+		for(int i=0; i<sortArr.length; i++) {
+			if(i < len1) sortArr[i] = arr1[i];
+			else sortArr[i] = arr2[i-len1];
+		}
 		
 		return sb.toString();
 	}
@@ -38,7 +41,7 @@ public class EX01_CombNSortArrays {
 		for(int i=0; i<len2; i++) {
 			arr2[i] = sc.nextInt();
 		}
-		System.out.println(csa.mySol(arr1, arr2));
+		System.out.println(csa.mySol(len1, len2, arr1, arr2));
 	}
 
 }
